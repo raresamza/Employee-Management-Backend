@@ -34,6 +34,11 @@ public class EmployeeController {
         return employeeService.getAllEmployees();
     }
 
+    @GetMapping("/with")
+    public List<Employee> getAllEmployeesWithID() {
+        return employeeService.getAllEmployeesWithID();
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Map<String, Boolean>> deleteEmployeeByID(@PathVariable String id) {
         boolean deleted=false;
@@ -41,5 +46,17 @@ public class EmployeeController {
         Map<String,Boolean> response=new HashMap<>();
         response.put("deleted",deleted);
         return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<EmployeeDTO> getEmployeeByID(@PathVariable String id) {
+        EmployeeDTO employee=null;
+        employee=employeeService.getEmployeeByID(id);
+        return ResponseEntity.ok(employee);
+    }
+    @PutMapping("/update/{id}")
+    public ResponseEntity<EmployeeDTO> updateEmployee(@PathVariable String id,@RequestBody EmployeeDTO employeeDTO) {
+        employeeDTO = employeeService.updateEmployee(id,employeeDTO);
+        return ResponseEntity.ok(employeeDTO);
     }
 }

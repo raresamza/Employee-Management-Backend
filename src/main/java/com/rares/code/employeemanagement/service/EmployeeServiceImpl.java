@@ -38,4 +38,28 @@ public class EmployeeServiceImpl implements EmployeeService {
         employeeRepository.delete(employee);
         return true;
     }
+
+    @Override
+    public List<Employee> getAllEmployeesWithID() {
+        return employeeRepository.findAll();
+    }
+
+    @Override
+    public EmployeeDTO getEmployeeByID(String id) {
+        System.out.println(employeeRepository.findById(id));
+        EmployeeDTO employeeDTO=mapper.toEmployeeDTO(employeeRepository.findById(id).get());
+
+        return employeeDTO;
+    }
+
+    @Override
+    public EmployeeDTO updateEmployee(String id, EmployeeDTO employeeDTO) {
+        Employee employee=employeeRepository.findById(id).get();
+        employee.setEmail(employeeDTO.getEmail());
+        employee.setFirstName(employeeDTO.getFirstName());
+        employee.setLastName(employeeDTO.getLastName());
+
+        employeeRepository.save(employee);
+        return employeeDTO;
+    }
 }
