@@ -24,7 +24,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public Employee addEmployee(EmployeeDTO employeeDTO) {
         System.out.println(employeeDTO);
-        return employeeRepository.insert(mapper.toEmployee(employeeDTO));
+        return employeeRepository.insert(mapper.toEmployeeCreate(employeeDTO));
     }
 
     @Override
@@ -58,7 +58,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         employee.setEmail(employeeDTO.getEmail());
         employee.setFirstName(employeeDTO.getFirstName());
         employee.setLastName(employeeDTO.getLastName());
-
+        employee.setWorkedHours(employeeDTO.getWorkedHours());
         employeeRepository.save(employee);
         return employeeDTO;
     }

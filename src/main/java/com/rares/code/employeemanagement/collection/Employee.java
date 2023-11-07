@@ -18,12 +18,22 @@ public class Employee {
     private String firstName;
     private String lastName;
     private String email;
+    private int workedHours=0;
 
-public Employee(String firstName,String lastName,String email) {
-    this.firstName=firstName;
-    this.lastName=lastName;
-    this.email=email;
-}
+    public Employee(String firstName, String lastName, String email, int workedHours)
+    {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.workedHours = workedHours;
+    }
+
+    public Employee(String firstName, String lastName, String email)
+    {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+    }
 
 }
 
