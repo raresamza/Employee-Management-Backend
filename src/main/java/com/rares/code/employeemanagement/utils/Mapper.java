@@ -12,7 +12,7 @@ public class Mapper {
     }
 
     public EmployeeDTO toEmployeeDTO(Employee employee) {
-        return new EmployeeDTO(employee.getFirstName(), employee.getLastName(), employee.getEmail(), employee.getWorkedHours());
+        return new EmployeeDTO(employee.getFirstName(), employee.getLastName(), employee.getEmail(), employee.getWorkedHours(),employee.getRole(), employee.getDescription());
     }
 
     public EmployeeDTO toEmployeeDTOCreate(Employee employee) {

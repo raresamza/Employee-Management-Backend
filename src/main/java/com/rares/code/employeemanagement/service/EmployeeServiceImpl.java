@@ -23,7 +23,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Employee addEmployee(EmployeeDTO employeeDTO) {
-        System.out.println(employeeDTO);
         return employeeRepository.insert(mapper.toEmployeeCreate(employeeDTO));
     }
 
@@ -46,7 +45,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public EmployeeDTO getEmployeeByID(String id) {
-        System.out.println(employeeRepository.findById(id));
         EmployeeDTO employeeDTO=mapper.toEmployeeDTO(employeeRepository.findById(id).get());
 
         return employeeDTO;
@@ -59,6 +57,9 @@ public class EmployeeServiceImpl implements EmployeeService {
         employee.setFirstName(employeeDTO.getFirstName());
         employee.setLastName(employeeDTO.getLastName());
         employee.setWorkedHours(employeeDTO.getWorkedHours());
+        employee.setRole(employeeDTO.getRole());
+        employee.setDescription(employeeDTO.getDescription());
+        System.out.println(employee+" employee in update function");
         employeeRepository.save(employee);
         return employeeDTO;
     }

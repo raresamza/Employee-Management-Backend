@@ -1,6 +1,7 @@
 package com.rares.code.employeemanagement.DTO;
 
 
+import com.rares.code.employeemanagement.utils.Role;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,6 +16,8 @@ public class EmployeeDTO {
     private String lastName;
     private String email;
     private int workedHours;
+    private Role role;
+    private String description;
     public EmployeeDTO(String firstName, String lastName, String email)
     {
         this.firstName = firstName;
